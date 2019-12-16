@@ -4,7 +4,12 @@
   "description": "A website for a fictional esports team.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/voxspero/esports-teamsite-1.git"
   },
   "author": "James Bernhardt",
   "license": "ISC",
@@ -15,6 +20,9 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "faker": "^4.1.0",
-    "mongoose": "^5.8.1"
+    "mongoose": "^5.8.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1"
   }
 }
