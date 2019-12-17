@@ -4,7 +4,7 @@ const express       = require("express"),
       middleware    = require("../middleware");
 
 // 1 - INDEX
-router.get("/", (req, res) => {
+router.get("/", middleware.isLoggedIn, (req, res) => {
     Staffer.find({}, (err, staffers) => {
         if(err){
             console.log(err);   
@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 });
 
 // 2 - CREATE
-router.post("/", (req, res) => {
+router.post("/", middleware.isLoggedIn, (req, res) => {
     let name		    = req.body.name,
         age             = req.body.age,
         role            = req.body.role,
@@ -47,7 +47,7 @@ router.get("/new", middleware.isLoggedIn, (req, res) => {
 });
 
 // 4 - SHOW
-router.get("/:id", (req, res) => {
+router.get("/:id", middleware.isLoggedIn, (req, res) => {
     Staffer.findById(req.params.id, (err, staffer) => {
         if(err){
             console.log(err);
@@ -69,7 +69,7 @@ router.get("/:id/edit", middleware.isLoggedIn, (req, res) => {
 });
 
 // 6 - UPDATE
-router.put("/:id", (req, res) => {
+router.put("/:id", middleware.isLoggedIn, (req, res) => {
     Staffer.findByIdAndUpdate(req.params.id, req.body.staffer, (err, staffer) => {
         if(err){
             res.redirect("/");

@@ -1,6 +1,7 @@
 const express       = require("express"),
       router        = express.Router(),
       Squad         = require("../models/squad"),
+      Player        = require("../models/player"),
       middleware    = require("../middleware");
 
 // 1 - INDEX
@@ -17,19 +18,32 @@ router.get("/", (req, res) => {
 // 2 - CREATE
 router.post("/", (req, res) => {
     let game		    = req.body.game,
-        // players     = req.body.title,
+        players         = req.body.players.split(" "),
         description     = req.body.description,
         thumbnail       = req.body.thumbnail,
 		photograph 	    = req.body.photograph,
 		startYear 	    = req.body.startYear,
-        newSquad 	= {
-                        game:           game,
-                        // players:        
-                        description:    description,
-                        thumbnail:      thumbnail,
-                        photograph:     photograph,
-                        startYear:      startYear
-            		};
+
+    let playerObjects   = [];  
+    
+    for(let i = 0; i < players.length; i++) {
+        Player.find({ handle: players[i] }, (err, player) => {
+            if(err) {
+                console.log(err);
+            } else {
+                playerObjects.push(player);
+            }
+        });
+    }
+
+    newSquad 	= {
+        game:           game,
+        players:        playerObjects,
+        description:    description,
+        thumbnail:      thumbnail,
+        photograph:     photograph,
+        startYear:      startYear
+    };
 
     Squad.create(newSquad, (err, squad) => {
         if(err) {
@@ -70,7 +84,24 @@ router.get("/:id/edit", middleware.isLoggedIn, (req, res) => {
 
 // 6 - UPDATE
 router.put("/:id", (req, res) => {
-    Squad.findByIdAndUpdate(req.params.id, req.body.squad, (err, squad) => {
+    let players         = req.body.players.split(" "),
+
+    let playerObjects   = [];  
+    
+    for(let i = 0; i < players.length; i++) {
+        Player.find({ handle: players[i] }, (err, player) => {
+            if(err) {
+                console.log(err);
+            } else {
+                playerObjects.push(player);
+            }
+        });
+    }
+
+    let newSquad = req.body.squad;
+    newSquad.players = playerObjects;
+
+    Squad.findByIdAndUpdate(req.params.id, newSquad, (err, squad) => {
         if(err){
             res.redirect("/");
         } else {

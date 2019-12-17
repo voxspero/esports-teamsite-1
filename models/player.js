@@ -5,6 +5,7 @@ let     now         = dayjs();
 
 let     PlayerSchema = new mongoose.Schema({
     name:           String,
+    handle:         String,
     age:            String,
     games:          [],
     bio:            String,
