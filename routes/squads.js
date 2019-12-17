@@ -22,7 +22,7 @@ router.post("/", (req, res) => {
         description     = req.body.description,
         thumbnail       = req.body.thumbnail,
 		photograph 	    = req.body.photograph,
-		startYear 	    = req.body.startYear,
+		startYear 	    = req.body.startYear;
 
     let playerObjects   = [];  
     
@@ -84,7 +84,7 @@ router.get("/:id/edit", middleware.isLoggedIn, (req, res) => {
 
 // 6 - UPDATE
 router.put("/:id", (req, res) => {
-    let players         = req.body.players.split(" "),
+    let players         = req.body.players.split(" ");
 
     let playerObjects   = [];  
     
