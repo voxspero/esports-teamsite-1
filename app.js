@@ -22,8 +22,12 @@ const   express         = require("express"),
 // ROUTES
 // --------------------------------------
 
-// const    fooRoutes   = require("./routes/foo"),
-//          barRoutes   = require("./routes/bar");
+const   aboutRoutes     = require("./routes/about"),
+        newsRoutes      = require("./routes/news"),
+        playerRoutes    = require("./routes/players"),
+        sponsorRoutes   = require("./routes/sponsors"),
+        squadRoutes     = require("./routes/squads"),
+        stafferRoutes   = require("./routes/staffers");
 
 // --------------------------------------
 // APP CONFIG
@@ -41,7 +45,12 @@ app.use(express.static(__dirname + "/public"));
 // APP ROUTES
 // --------------------------------------
 
-// app.use("/path", routeVariable);
+app.use("/about", aboutRoutes);
+app.use("/news", newsRoutes);
+app.use("/players", playerRoutes);
+app.use("/sponsors", sponsorRoutes);
+app.use("/squads", squadRoutes);
+app.use("/staffers", stafferRoutes);
 
 // --------------------------------------
 // INDEX ROUTE

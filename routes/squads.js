@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 });
 
 // 2 - CREATE
-router.post("/", (req, res) => {
+router.post("/", middleware.isLoggedIn, (req, res) => {
     let game		    = req.body.game,
         players         = req.body.players.split(" "),
         description     = req.body.description,
@@ -83,7 +83,7 @@ router.get("/:id/edit", middleware.isLoggedIn, (req, res) => {
 });
 
 // 6 - UPDATE
-router.put("/:id", (req, res) => {
+router.put("/:id", middleware.isLoggedIn, (req, res) => {
     let players         = req.body.players.split(" ");
 
     let playerObjects   = [];  
