@@ -4,6 +4,7 @@ const mongoose      = require("mongoose"),
 let now             = dayjs();
 
 let NewsPostSchema  = new mongoose.Schema({
+                        author:         String,
                         title:          String,
                         body:           String,
                         game:           String,

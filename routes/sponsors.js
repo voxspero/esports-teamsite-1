@@ -19,19 +19,20 @@ router.post("/", (req, res) => {
     let name		    = req.body.name,
         description     = req.body.description,
         thumbnail       = req.body.thumbnail,
-		photograph 	    = req.body.photograph,
-		startYear 	    = req.body.startYear,
-        newSponsor 	= {
-                        name:           name,     
-                        description:    description,
-                        thumbnail:      thumbnail,
-                        photograph:     photograph,
-                        startYear:      startYear
-                    };
+		logo 	        = req.body.logo,
+        startYear 	    = req.body.startYear;
+        
+    const newSponsor 	= new Sponsor({
+                            name:           name,     
+                            description:    description,
+                            thumbnail:      thumbnail,
+                            logo:           logo,
+                            startYear:      startYear
+                        });
 
-    Sponsor.create(newSponsor, (err, sponsor) => {
-        if(err) {
-            console.log(err);
+    newSponsor.save((err) => {
+        if (err) {
+            return handleError(err);
         } else {
             console.log("created a sponsor!");
             res.redirect("/sponsors");

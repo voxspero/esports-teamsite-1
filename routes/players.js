@@ -1,6 +1,7 @@
 const express       = require("express"),
       router        = express.Router(),
       Player        = require("../models/player"),
+      Squad         = require("../models/squad"),
       middleware    = require("../middleware");
 
 // 1 - INDEX
@@ -16,26 +17,45 @@ router.get("/", middleware.isLoggedIn, (req, res) => {
 
 // 2 - CREATE
 router.post("/", middleware.isLoggedIn, (req, res) => {
+    // Grab input
     let name		    = req.body.name,
         age             = req.body.age,
         handle          = req.body.handle,
-        games           = req.body.games.split(" ");
+        squads          = req.body.squads.split(" ");
         bio             = req.body.bio,
         thumbnail       = req.body.thumbnail,
-		photograph 	    = req.body.photograph,
-        newPlayer 	= {
-                        name		    = name,
-                        age             = age,
-                        handle          = handle,
-                        games           = games,
-                        bio             = bio,
-                        thumbnail       = thumbnail,
-                        photograph 	    = photograph
-                    };
+		photograph 	    = req.body.photograph;
 
-    Player.create(newPlayer, (err, player) => {
-        if(err) {
-            console.log(err);
+    // To be populated with the relevant squad _id(s)
+    let squadIDs        = [];   
+    
+    // populate squadIDs with squad ObjectID references matching each game found
+    for(let i = 0; i < squads.length; i++) {
+        Squad.find({ game: squads[i] }, (err, squad) => {
+            if(err) {
+                console.log(err);
+            } else {
+                squadIDs.push(squad._id);
+            }
+        });
+    }
+
+    // new Player object
+    const newPlayer     = new Player({
+                            _id:            new mongoose.Types.ObjectId(),
+                            name:		    name,
+                            age:            age,
+                            handle:         handle,
+                            squads:         squadIDs,
+                            bio:            bio,
+                            thumbnail:      thumbnail,
+                            photograph:     photograph
+                        });
+
+    // save newPlayer            
+    newPlayer.save((err) => {
+        if (err) {
+            return handleError(err);
         } else {
             console.log("created a player!");
             res.redirect("/players");

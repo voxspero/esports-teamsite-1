@@ -1,8 +1,9 @@
 const mongoose      = require("mongoose");
 
 let SquadSchema     = new mongoose.Schema({
+                        _id:            Schema.Types.ObjectId,
                         game:           String,
-                        players:        [],
+                        players:        [{ type: Schema.Types.ObjectId, ref: 'Player' }],
                         description:    String,
                         thumbnail:      String,
                         photograph:     String,

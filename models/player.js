@@ -4,10 +4,11 @@ const mongoose      = require("mongoose"),
 let now             = dayjs();
 
 let PlayerSchema    = new mongoose.Schema({
+                            _id:            Schema.Types.ObjectId,
                             name:           String,
                             age:            String,
                             handle:         String,
-                            games:          [],
+                            squads:         [{ type: Schema.Types.ObjectId, ref: 'Squad' }],
                             bio:            String,
                             thumbnail:      String,
                             photograph:     String,

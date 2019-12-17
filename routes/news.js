@@ -16,24 +16,27 @@ router.get("/", (req, res) => {
 
 // 2 - CREATE
 router.post("/", (req, res) => {
-    let title		    = req.body.title,
-        body            = req.body.body,
-        game            = req.body.game,
-        thumbnail       = req.body.thumbnail,
-        images 	        = req.body.images.split(" ");
-        newPost      	= {
-                            title		    = title,
-                            body            = body,
-                            game            = game,
-                            thumbnail       = thumbnail,
-                            images 	        = images
-                        };
+    let author      = req.user.username,
+        title		= req.body.title,
+        body        = req.body.body,
+        game        = req.body.game,
+        thumbnail   = req.body.thumbnail,
+        images 	    = req.body.images.split(" ");
 
-    NewsPost.create(newPost, (err, newspost) => {
-        if(err) {
-            console.log(err);
+    const newPost   = new NewsPost({
+                        author:     author,
+                        title:		title,
+                        body:       body,
+                        game:       game,
+                        thumbnail:  thumbnail,
+                        images: 	images
+                    });
+
+    newPost.save((err) => {
+        if (err) {
+            return handleError(err);
         } else {
-            console.log("created a news post!");
+            console.log("created a new post!");
             res.redirect("/news");
         }
     });

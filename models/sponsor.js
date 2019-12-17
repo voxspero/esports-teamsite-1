@@ -4,7 +4,7 @@ let SponsorSchema   = new mongoose.Schema({
                         name:           String,
                         description:    String,
                         thumbnail:      String,
-                        photograph:     String,
+                        logo:           String,
                         startYear:      String,
                         created:        {
                                             type: Date,

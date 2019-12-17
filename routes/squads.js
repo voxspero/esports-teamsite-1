@@ -45,11 +45,46 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
         startYear:      startYear
     };
 
-    Squad.create(newSquad, (err, squad) => {
-        if(err) {
-            console.log(err);
+
+    // Grab input
+    let game		    = req.body.game,
+        players         = req.body.players.split(" ");
+        description     = req.body.description,
+        thumbnail       = req.body.thumbnail,
+        photograph 	    = req.body.photograph,
+        startYear 	    = req.body.startYear;
+
+    // To be populated with the relevant squad _id(s)
+    let playerIDs        = [];   
+    
+    // populate playerIDs with ObjectID references matching each player found
+    for(let i = 0; i < players.length; i++) {
+        Player.find({ handle: players[i] }, (err, player) => {
+            if(err) {
+                console.log(err);
+            } else {
+                playerIDs.push(player._id);
+            }
+        });
+    }
+
+    // new Squad object
+    const newSquad     = new Squad({
+                            _id:            new mongoose.Types.ObjectId(),
+                            game:           game,
+                            players:        playerIDs,
+                            description:    description,
+                            thumbnail:      thumbnail,
+                            photograph:     photograph,
+                            startYear:      startYear
+                        });
+
+    // save newSquad            
+    newSquad.save((err) => {
+        if (err) {
+            return handleError(err);
         } else {
-            console.log("created a SQUAD!");
+            console.log("created a squad!");
             res.redirect("/squads");
         }
     });

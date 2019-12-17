@@ -1,0 +1,55 @@
+<% include ../partials/header.ejs %>
+
+<section class="content">
+
+    <div class="d-flex justify-content-center align-items-center show-image-container">
+        <% if(newspost.images.length < 2) { %>
+            <a class="show-image-link" href="<%= newspost.images[0] %>" style="background-image: url('<%= newspost.images[0] %>');">
+                <img class="show-image" src="<%= newspost.images[0] %>">
+            </a>
+        <% } else { %>
+            <% newpost.images.forEach(function(image){ %>
+                <div class="mySlides">
+                    <a class="show-image-link" href="<%= image %>" style="background-image: url('<%= image %>');">
+                        <div class="numbertext"><%= (newspost.images.indexOf(path) + 1) %> / <%= newspost.images.length %></div>
+                        <img class="show-image" src="<%= image %>">
+                    </a>
+                </div>
+            <% }); %>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <% } %>
+    </div>
+
+    <div class="row mx-0">
+
+        <div class="col-lg col-md">
+        </div>
+
+        <div class="col-lg-10 col-md-10">
+            <div class="d-flex flex-column align-items-center">
+                <div class="card my-5">
+                    <h5 class="card-header d-flex align-items-center justify-content-between"><%= newspost.title %><span class="card-text show-card-year"><%= newspost.year %></span></h5>
+                    <div class="card-body">
+                        <h4 class="card-title">By <%= newspost.author %></h4>
+                        <p><%= newspost.postDate %>, <%= newspost.postTime %></p>
+                        <p>Game: <%= newspost.game %></p>
+                        <hr class="mt-4 mb-3">
+                        <p class="preserve-space"><%= newspost.body %></p>
+                        <div class="d-flex justify-content-around mb-2">
+                            <a href="/news" class="btn">Back to News</a>
+                            <a href="/" class="btn">Back to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg col-md">
+        </div>
+
+    </div>
+
+</section>
+
+<% include ../partials/footer.ejs %>

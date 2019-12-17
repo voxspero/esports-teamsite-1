@@ -16,7 +16,7 @@ const   express         = require("express"),
                             useFindAndModify: false
                         },
         dbUrl           = process.env.DATABASEURL;
-        // "mongodb://localhost/portfolio";
+        // "mongodb://localhost/esport-teamsite-1";
 
 // --------------------------------------        
 // ROUTES
@@ -51,6 +51,28 @@ app.use("/players", playerRoutes);
 app.use("/sponsors", sponsorRoutes);
 app.use("/squads", squadRoutes);
 app.use("/staffers", stafferRoutes);
+
+// --------------------------------------
+// PASSPORT CONFIG
+// --------------------------------------
+
+app.use(session({
+    secret: "lol hi",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;   
+    next();
+});
+
 
 // --------------------------------------
 // INDEX ROUTE

@@ -21,24 +21,34 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
         role            = req.body.role,
         bio             = req.body.bio,
         thumbnail       = req.body.thumbnail,
-		photograph 	    = req.body.photograph,
-        newStaffer 	= {
-                        name		    = name,
-                        age             = age,
-                        role            = role,
-                        bio             = bio,
-                        thumbnail       = thumbnail,
-                        photograph 	    = photograph
-                    };
+        photograph 	    = req.body.photograph;
+        
+    const newStaffer 	= new Staffer({
+                            name:        name,
+                            age:         age,
+                            role:        role,
+                            bio:         bio,
+                            thumbnail:   thumbnail,
+                            photograph:  photograph
+                        });
 
-    Staffer.create(newStaffer, (err, staffer) => {
-        if(err) {
-            console.log(err);
+    newStaffer.save((err) => {
+        if (err) {
+            return handleError(err);
         } else {
             console.log("created a staffer!");
             res.redirect("/staffers");
         }
-    });
+    });                
+
+    // Staffer.create(newStaffer, (err, staffer) => {
+    //     if(err) {
+    //         console.log(err);
+    //     } else {
+    //         console.log("created a staffer!");
+    //         res.redirect("/staffers");
+    //     }
+    // });
 });
 
 // 3 - NEW
