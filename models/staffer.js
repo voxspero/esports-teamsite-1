@@ -5,6 +5,7 @@ let     now             = dayjs();
 
 let     StafferSchema   = new mongoose.Schema({
                             name:           String,
+                            handle:         String,
                             age:            String,
                             role:           String,
                             bio:            String,

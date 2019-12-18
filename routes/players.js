@@ -19,9 +19,9 @@ router.get("/", middleware.isLoggedIn, (req, res) => {
 router.post("/", middleware.isLoggedIn, (req, res) => {
     // Grab input
     let name		    = req.body.name,
-        age             = req.body.age,
         handle          = req.body.handle,
-        squads          = req.body.squads.split(" ");
+        age             = req.body.age,
+        squads          = req.body.squads.split(", ");
         bio             = req.body.bio,
         thumbnail       = req.body.thumbnail,
 		photograph 	    = req.body.photograph;
@@ -44,8 +44,8 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
     const newPlayer     = new Player({
                             _id:            new mongoose.Types.ObjectId(),
                             name:		    name,
-                            age:            age,
                             handle:         handle,
+                            age:            age,
                             squads:         squadIDs,
                             bio:            bio,
                             thumbnail:      thumbnail,

@@ -14,7 +14,7 @@ router.get("/register", (req, res) => {
 
 // Register - POST
 
-router.post("/register", middleware.isLoggedIn, (req, res) => {
+router.post("/register", (req, res) => {
     let newUser     = new User({username: req.body.username});
 
     User.register(newUser, req.body.password, (err, user) => {
@@ -37,7 +37,7 @@ router.get("/login", (req, res) => {
 
 router.post("/login", passport.authenticate("local", 
     {
-        successRedirect: "/images",
+        successRedirect: "/",
         failureRedirect: "/login"
     }), (req, res) => {
 });

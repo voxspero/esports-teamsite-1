@@ -1,0 +1,44 @@
+<% include ../partials/header.ejs %>
+
+<section class="container-fluid content">
+    <div class="row justify-content-around">
+        <div class="col-lg col-md">
+        </div>
+        <div class="col-lg-6 col-md-6"> 
+            <div class="d-flex flex-column">
+                <div class="card input-card">
+                    <h3 class="card-header input-card-title">New Sponsor</h3>
+                    <div class="card-body">
+                        <form action="/images" method="POST">
+                            <h5 class="input-card-subtitle">Name</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="name" class="form-control" placeholder="">
+                            </div>
+                            <h5 class="input-card-subtitle">Description</h5>
+                            <div class="input-group mb-3">
+                                <textarea rows="10" name="description" class="form-control" required></textarea>
+                            </div>
+                            <h5 class="input-card-subtitle">Thumbnail Logo</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="thumbnail" class="form-control" placeholder="">
+                            </div>
+                            <h5 class="input-card-subtitle">Full-Size Logo</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="logo" class="form-control" placeholder="">
+                            </div>
+                            <h5 class="input-card-subtitle">Sponsor Since (Year)</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="startYear" class="form-control" placeholder="">
+                            </div>
+
+                            <input class="btn input-card-button" type="submit" value="Submit New Post">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg col-md"></div>
+    </div>
+</section>
+
+<% include ../partials/footer.ejs %>

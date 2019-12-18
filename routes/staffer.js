@@ -17,6 +17,7 @@ router.get("/", middleware.isLoggedIn, (req, res) => {
 // 2 - CREATE
 router.post("/", middleware.isLoggedIn, (req, res) => {
     let name		    = req.body.name,
+        handle          = req.body.handle,
         age             = req.body.age,
         role            = req.body.role,
         bio             = req.body.bio,
@@ -25,6 +26,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
         
     const newStaffer 	= new Staffer({
                             name:        name,
+                            handle:      handle,
                             age:         age,
                             role:        role,
                             bio:         bio,

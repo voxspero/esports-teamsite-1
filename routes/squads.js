@@ -48,7 +48,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
 
     // Grab input
     let game		    = req.body.game,
-        players         = req.body.players.split(" ");
+        players         = req.body.players.split(", ");
         description     = req.body.description,
         thumbnail       = req.body.thumbnail,
         photograph 	    = req.body.photograph,

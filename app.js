@@ -16,7 +16,7 @@ const   express         = require("express"),
                             useFindAndModify: false
                         },
         dbUrl           = process.env.DATABASEURL;
-        // "mongodb://localhost/esport-teamsite-1";
+        // "mongodb://localhost/esports-teamsite-1";
 
 // --------------------------------------        
 // ROUTES

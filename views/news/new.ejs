@@ -12,7 +12,7 @@
                         <form action="/images" method="POST">
                             <h5 class="input-card-subtitle">Author</h5>
                             <div class="input-group mb-3">
-                                <input type="text" name="author" class="form-control" placeholder="" value="<%= currentUser.username %>" readonly="readonly">
+                                <input type="text" name="author" class="form-control" placeholder="" value="<%= currentUser.username %>">
                             </div>
                             <h5 class="input-card-subtitle">Title</h5>
                             <div class="input-group mb-3">
@@ -30,7 +30,6 @@
                             <div class="input-group mb-3">
                                 <textarea rows="10" name="body" class="form-control" required></textarea>
                             </div>
-                            <h5 class="input-card-subtitle">Year</h5>
 
                             <input class="btn input-card-button" type="submit" value="Submit New Post">
                         </form>

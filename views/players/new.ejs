@@ -10,27 +10,34 @@
                     <h3 class="card-header input-card-title">New Player</h3>
                     <div class="card-body">
                         <form action="/images" method="POST">
-                            <h5 class="input-card-subtitle">Author</h5>
+                            <h5 class="input-card-subtitle">Name</h5>
                             <div class="input-group mb-3">
-                                <input type="text" name="author" class="form-control" placeholder="" value="<%= currentUser.username %>" readonly="readonly">
+                                <input type="text" name="name" class="form-control" placeholder="">
                             </div>
-                            <h5 class="input-card-subtitle">Title</h5>
+                            <h5 class="input-card-subtitle">Handle/Alias</h5>
                             <div class="input-group mb-3">
-                                <input type="text" name="title" class="form-control" placeholder="">
+                                <input type="text" name="handle" class="form-control" placeholder="">
                             </div>
-                            <h5 class="input-card-subtitle">Thumbnail Image</h5>
+                            <h5 class="input-card-subtitle">Age</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="age" class="form-control" placeholder="">
+                            </div>
+                            <h5 class="input-card-subtitle">Squads (Game names separated by comma and space, i.e. "CSGO, Quake, Apex Legends")</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="squads" class="form-control" placeholder="">
+                            </div>
+                            <h5 class="input-card-subtitle">Bio</h5>
+                            <div class="input-group mb-3">
+                                <textarea rows="10" name="bio" class="form-control" required></textarea>
+                            </div>
+                            <h5 class="input-card-subtitle">Thumbnail Photograph</h5>
                             <div class="input-group mb-3">
                                 <input type="text" name="thumbnail" class="form-control" placeholder="">
                             </div>
-                            <h5 class="input-card-subtitle">Images (separate with a space)</h5>
+                            <h5 class="input-card-subtitle">Full-Size Photograph</h5>
                             <div class="input-group mb-3">
-                                <input type="text" name="images" class="form-control" placeholder="">
+                                <input type="text" name="photograph" class="form-control" placeholder="">
                             </div>
-                            <h5 class="input-card-subtitle">Body</h5>
-                            <div class="input-group mb-3">
-                                <textarea rows="10" name="body" class="form-control" required></textarea>
-                            </div>
-                            <h5 class="input-card-subtitle">Year</h5>
 
                             <input class="btn input-card-button" type="submit" value="Submit New Post">
                         </form>
