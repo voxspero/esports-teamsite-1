@@ -1,0 +1,54 @@
+<% include ../partials/header.ejs %>
+
+<section class="container-fluid content">
+    <div class="row justify-content-around">
+        <div class="col-lg col-md">
+
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="d-flex flex-column">
+                <div class="card input-card">
+                    <h3 class="card-header input-card-title">Edit "<%= staffer.name %>"</h3>
+                    <div class="card-body">
+                        <form action="/staffers/<%= staffer._id%>?_method=PUT" method="POST">
+                            <h5 class="input-card-subtitle">Name</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="staffer[name]" class="form-control" value="<%= staffer.name %>">
+                            </div>
+                            <h5 class="input-card-subtitle">Handle/Alias</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="staffer[handle]" class="form-control" value="<%= staffer.handle %>">
+                            </div>
+                            <h5 class="input-card-subtitle">Age</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="staffer[age]" class="form-control" value="<%= staffer.age %>">
+                            </div>
+                            <h5 class="input-card-subtitle">Role</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="staffer[role]" class="form-control" value="<%= staffer.role %>">
+                            </div>                                                  
+                            <h5 class="input-card-subtitle">Bio</h5>
+                            <div class="input-group mb-3">
+                                <textarea class="form-control" rows=10 name="staffer[bio]" required><%= staffer.bio %></textarea>
+                            </div>
+                            <h5 class="input-card-subtitle">Thumbnail Photograph</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="staffer[thumbnail]" class="form-control" value="<%= staffer.thumbnail %>">
+                            </div>
+                            <h5 class="input-card-subtitle">Full-Size Photograph</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="staffer[photograph]" class="form-control" value="<%= staffer.photograph %>">
+                            </div>
+
+
+                            <input class="btn input-card-button" type="submit" value="Submit Changes">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg col-md"></div>
+    </div>
+</section>
+
+<% include ../partials/footer.ejs %>

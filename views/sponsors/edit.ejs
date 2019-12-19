@@ -1,0 +1,45 @@
+<% include ../partials/header.ejs %>
+
+<section class="container-fluid content">
+    <div class="row justify-content-around">
+        <div class="col-lg col-md">
+
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="d-flex flex-column">
+                <div class="card input-card">
+                    <h3 class="card-header input-card-title">Edit "<%= sponsor.name %>"</h3>
+                    <div class="card-body">
+                        <form action="/sponsors/<%= sponsor._id%>?_method=PUT" method="POST">
+                            <h5 class="input-card-subtitle">Name</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="sponsor[name]" class="form-control" value="<%= sponsor.name %>">
+                            </div>                                                  
+                            <h5 class="input-card-subtitle">Description</h5>
+                            <div class="input-group mb-3">
+                                <textarea class="form-control" rows=10 name="sponsor[description]" required><%= sponsor.description %></textarea>
+                            </div>
+                            <h5 class="input-card-subtitle">Thumbnail Logo</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="sponsor[thumbnail]" class="form-control" value="<%= sponsor.thumbnail %>">
+                            </div>
+                            <h5 class="input-card-subtitle">Full-Size Logo</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="sponsor[logo]" class="form-control" value="<%= sponsor.logo %>">
+                            </div>
+                            <h5 class="input-card-subtitle">Sponsor Since</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="sponsor[startYear]" class="form-control" value="<%= sponsor.startYear %>">
+                            </div>    
+
+                            <input class="btn input-card-button" type="submit" value="Submit Changes">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg col-md"></div>
+    </div>
+</section>
+
+<% include ../partials/footer.ejs %>

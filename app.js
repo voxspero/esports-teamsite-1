@@ -2,6 +2,8 @@
 // {} - REQUIREMENTS / DECLARATIONS
 // --------------------------------------
 
+require('dotenv').config();
+
 const   express         = require("express"),
         app             = express(),
         session         = require("express-session"),
@@ -9,6 +11,7 @@ const   express         = require("express"),
         passport        = require("passport"),
         LocalStrategy   = require("passport-local"),
         mongoose        = require("mongoose"),
+        User            = require("./models/user"),
         // seebDB          = require("./seeds"),
         mongooseOptions = {
                             useNewUrlParser: true,

@@ -17,44 +17,16 @@ router.get("/", (req, res) => {
 
 // 2 - CREATE
 router.post("/", middleware.isLoggedIn, (req, res) => {
-    let game		    = req.body.game,
-        players         = req.body.players.split(" "),
-        description     = req.body.description,
-        thumbnail       = req.body.thumbnail,
-		photograph 	    = req.body.photograph,
-		startYear 	    = req.body.startYear;
-
-    let playerObjects   = [];  
-    
-    for(let i = 0; i < players.length; i++) {
-        Player.find({ handle: players[i] }, (err, player) => {
-            if(err) {
-                console.log(err);
-            } else {
-                playerObjects.push(player);
-            }
-        });
-    }
-
-    newSquad 	= {
-        game:           game,
-        players:        playerObjects,
-        description:    description,
-        thumbnail:      thumbnail,
-        photograph:     photograph,
-        startYear:      startYear
-    };
-
-
     // Grab input
-    let game		    = req.body.game,
+    let name		    = req.body.name,
+        game		    = req.body.game,
         players         = req.body.players.split(", ");
         description     = req.body.description,
         thumbnail       = req.body.thumbnail,
         photograph 	    = req.body.photograph,
         startYear 	    = req.body.startYear;
 
-    // To be populated with the relevant squad _id(s)
+    // To be populated with the relevant player _id(s)
     let playerIDs        = [];   
     
     // populate playerIDs with ObjectID references matching each player found
@@ -71,6 +43,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
     // new Squad object
     const newSquad     = new Squad({
                             _id:            new mongoose.Types.ObjectId(),
+                            name:           name,
                             game:           game,
                             players:        playerIDs,
                             description:    description,

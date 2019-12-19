@@ -1,7 +1,4 @@
-const mongoose      = require("mongoose"),
-      dayjs         = require("dayjs");
-
-let now             = dayjs();
+const mongoose      = require("mongoose");
 
 let NewsPostSchema  = new mongoose.Schema({
                         author:         String,
@@ -10,8 +7,8 @@ let NewsPostSchema  = new mongoose.Schema({
                         game:           String,
                         thumbnail:      String,
                         images:         [],
-                        postDate:       now.format("dddd, MMMM D YYYY"),
-                        postTime:       now.format("h:mm a"),
+                        postDate:       String,
+                        postTime:       String,
                         created:        {
                                             type: Date,
                                             default: Date.now

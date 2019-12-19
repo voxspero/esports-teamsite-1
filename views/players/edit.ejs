@@ -1,0 +1,54 @@
+<% include ../partials/header.ejs %>
+
+<section class="container-fluid content">
+    <div class="row justify-content-around">
+        <div class="col-lg col-md">
+
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="d-flex flex-column">
+                <div class="card input-card">
+                    <h3 class="card-header input-card-title">Edit "<%= player.handle %>"</h3>
+                    <div class="card-body">
+                        <form action="/players/<%= player._id%>?_method=PUT" method="POST">
+                            <h5 class="input-card-subtitle">Name</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="player[name]" class="form-control" value="<%= player.name %>">
+                            </div>
+                            <h5 class="input-card-subtitle">Handle/Alias</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="player[handle]" class="form-control" value="<%= player.handle %>">
+                            </div>
+                            <h5 class="input-card-subtitle">Age</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="player[age]" class="form-control" value="<%= player.age %>">
+                            </div>                            
+                            <h5 class="input-card-subtitle">Squads (Names separated by comma and space, i.e. "Quake, Apex Legends 2, CSGO-Blue")</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="player[squads]" class="form-control" value="<%= player.squads %>">
+                            </div>                            
+                            <h5 class="input-card-subtitle">Bio</h5>
+                            <div class="input-group mb-3">
+                                <textarea class="form-control" rows=10 name="player[bio]" required><%= player.bio %></textarea>
+                            </div>
+                            <h5 class="input-card-subtitle">Thumbnail Photograph</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="player[thumbnail]" class="form-control" value="<%= player.thumbnail %>">
+                            </div>
+                            <h5 class="input-card-subtitle">Full-Size Photograph</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="player[photograph]" class="form-control" value="<%= player.photograph %>">
+                            </div>
+
+
+                            <input class="btn input-card-button" type="submit" value="Submit Changes">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg col-md"></div>
+    </div>
+</section>
+
+<% include ../partials/footer.ejs %>

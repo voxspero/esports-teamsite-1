@@ -24,14 +24,15 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
         squads          = req.body.squads.split(", ");
         bio             = req.body.bio,
         thumbnail       = req.body.thumbnail,
-		photograph 	    = req.body.photograph;
+        photograph 	    = req.body.photograph,
+        joinDate        = now.format("YYYY-MM-DD");
 
     // To be populated with the relevant squad _id(s)
     let squadIDs        = [];   
     
-    // populate squadIDs with squad ObjectID references matching each game found
+    // populate squadIDs with squad ObjectID references matching each name found
     for(let i = 0; i < squads.length; i++) {
-        Squad.find({ game: squads[i] }, (err, squad) => {
+        Squad.find({ name: squads[i] }, (err, squad) => {
             if(err) {
                 console.log(err);
             } else {
@@ -49,7 +50,8 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
                             squads:         squadIDs,
                             bio:            bio,
                             thumbnail:      thumbnail,
-                            photograph:     photograph
+                            photograph:     photograph,
+                            joinDate:       joinDate
                         });
 
     // save newPlayer            

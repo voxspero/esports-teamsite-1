@@ -1,0 +1,31 @@
+<% include ../partials/header.ejs %>
+
+<section class="container-fluid content">
+    <div class="row justify-content-center">
+        <div class="col-lg col-md d-sm-none">
+
+        </div>
+        <div class="col-lg-10 col-md col-sm">
+            <div class="d-flex row justify-content-center pt-3">
+                <% for(staffer of staffers) { %>
+                    <div class="card index-card my-3 mx-3">
+                        <a class="card-img-top index-img" href="/staffers/<%= staffer._id %>" style="background-image: url('<%= staffer.thumbnail %>');"></a>
+                        <h5 class="card-header d-flex index-card-title align-items-center justify-content-between"><%= staffer.name %><span class="card-text index-card-year"><%= staffer.role %></span></h5>
+                        <div class="card-body">
+                            
+                            <% if(staffer.bio.length > 175) { %>    
+                                <p class="card-text"><%= staffer.bio.substring(0, 175) %><span class="ellipsis">  .  .  .  </span></p>
+                            <% } else { %>
+                                <p class="card-text"><%= staffer.bio %></p>
+                            <% } %>
+                            <a href="/images/<%= staffer._id %>" class="btn btn-sm index-card-button mt-1">View</a>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+        <div class="col-lg col-md d-sm-none"></div>
+    </div>
+</section>
+
+<% include ../partials/footer.ejs %>

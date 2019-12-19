@@ -11,7 +11,7 @@ let     StafferSchema   = new mongoose.Schema({
                             bio:            String,
                             thumbnail:      String,
                             photograph:     String,
-                            joinDate:       now.format("YYYY-MM-DD"),
+                            joinDate:       String,
                             created:        {
                                                 type: Date,
                                                 default: Date.now

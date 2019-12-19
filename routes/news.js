@@ -1,7 +1,8 @@
 const express       = require("express"),
       router        = express.Router(),
       NewsPost      = require("../models/newspost"),
-      middleware    = require("../middleware");
+      middleware    = require("../middleware"),
+      dayjs         = require("dayjs");
 
 // 1 - INDEX
 router.get("/", (req, res) => {
@@ -21,6 +22,8 @@ router.post("/", (req, res) => {
         body        = req.body.body,
         game        = req.body.game,
         thumbnail   = req.body.thumbnail,
+        postDate    = now.format("dddd, MMMM D YYYY"),
+        postTime    = now.format("h:mm a"),    
         images 	    = req.body.images.split(" ");
 
     const newPost   = new NewsPost({
@@ -29,7 +32,9 @@ router.post("/", (req, res) => {
                         body:       body,
                         game:       game,
                         thumbnail:  thumbnail,
-                        images: 	images
+                        images: 	images,
+                        postDate:   postDate,
+                        postTime:   postTime
                     });
 
     newPost.save((err) => {

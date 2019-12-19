@@ -1,0 +1,45 @@
+<% include ../partials/header.ejs %>
+
+<section class="container-fluid content">
+    <div class="row justify-content-around">
+        <div class="col-lg col-md">
+
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="d-flex flex-column">
+                <div class="card input-card">
+                    <h3 class="card-header input-card-title">Edit "<%= newspost.title %>"</h3>
+                    <div class="card-body">
+                        <form action="/news/<%= newspost._id%>?_method=PUT" method="POST">
+                            <h5 class="input-card-subtitle">Author</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="newspost[author]" class="form-control" value="<%= newspost.author %>">
+                            </div>
+                            <h5 class="input-card-subtitle">Title</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="newspost[title]" class="form-control" value="<%= newspost.title %>">
+                            </div>
+                            <h5 class="input-card-subtitle">Thumbnail Image</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="newspost[thumbnail]" class="form-control" value="<%= newspost.title %>">
+                            </div>
+                            <h5 class="input-card-subtitle">Images (separate with a space)</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" name="newspost[images]" class="form-control" value="<%= newspost.images %>">
+                            </div>
+                            <h5 class="input-card-subtitle">Body</h5>
+                            <div class="input-group mb-3">
+                                <textarea class="form-control" rows=10 name="newspost[body]" required><%= newspost.body %></textarea>
+                            </div>
+
+                            <input class="btn input-card-button" type="submit" value="Submit Changes">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg col-md"></div>
+    </div>
+</section>
+
+<% include ../partials/footer.ejs %>
