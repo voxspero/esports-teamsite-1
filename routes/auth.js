@@ -22,7 +22,7 @@ router.post("/register", (req, res) => {
             console.log(err);
         } 
         passport.authenticate("local")(req, res, function(){
-           res.redirect("/images"); 
+           res.redirect("/"); 
         });
     });
 });
@@ -46,7 +46,7 @@ router.post("/login", passport.authenticate("local",
 
 router.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("/images");
+    res.redirect("/");
 });
 
 module.exports = router;

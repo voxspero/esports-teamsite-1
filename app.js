@@ -9,9 +9,9 @@ const   express         = require("express"),
         session         = require("express-session"),
         bodyParser      = require("body-parser"),
         methodOverride  = require("method-override"),
+        mongoose        = require("mongoose"),
         passport        = require("passport"),
         LocalStrategy   = require("passport-local"),
-        mongoose        = require("mongoose"),
         User            = require("./models/user"),
         // seebDB          = require("./seeds"),
         mongooseOptions = {
@@ -49,18 +49,6 @@ app.use(methodOverride("_method"));
 // seedDB();
 
 // --------------------------------------
-// APP ROUTES
-// --------------------------------------
-
-app.use("/", authRoutes);
-app.use("/about", aboutRoutes);
-app.use("/news", newsRoutes);
-app.use("/players", playerRoutes);
-app.use("/sponsors", sponsorRoutes);
-app.use("/squads", squadRoutes);
-app.use("/staffers", stafferRoutes);
-
-// --------------------------------------
 // PASSPORT CONFIG
 // --------------------------------------
 
@@ -81,6 +69,17 @@ app.use((req, res, next) => {
     next();
 });
 
+// --------------------------------------
+// APP ROUTES
+// --------------------------------------
+
+app.use("/", authRoutes);
+app.use("/about", aboutRoutes);
+app.use("/news", newsRoutes);
+app.use("/players", playerRoutes);
+app.use("/sponsors", sponsorRoutes);
+app.use("/squads", squadRoutes);
+app.use("/staffers", stafferRoutes);
 
 // --------------------------------------
 // INDEX ROUTE
