@@ -8,6 +8,7 @@ const   express         = require("express"),
         app             = express(),
         session         = require("express-session"),
         bodyParser      = require("body-parser"),
+        methodOverride  = require("method-override"),
         passport        = require("passport"),
         LocalStrategy   = require("passport-local"),
         mongoose        = require("mongoose"),
@@ -25,7 +26,8 @@ const   express         = require("express"),
 // ROUTES
 // --------------------------------------
 
-const   aboutRoutes     = require("./routes/about"),
+const   authRoutes      = require("./routes/auth"),
+        aboutRoutes     = require("./routes/about"),
         newsRoutes      = require("./routes/news"),
         playerRoutes    = require("./routes/players"),
         sponsorRoutes   = require("./routes/sponsors"),
@@ -40,14 +42,17 @@ mongoose.connect(dbUrl, mongooseOptions,
     () => console.log(`Connected to DB!`));
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set('views', __dirname + '/views');
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
 // seedDB();
 
 // --------------------------------------
 // APP ROUTES
 // --------------------------------------
 
+app.use("/", authRoutes);
 app.use("/about", aboutRoutes);
 app.use("/news", newsRoutes);
 app.use("/players", playerRoutes);
