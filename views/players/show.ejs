@@ -18,8 +18,13 @@
                 <p><%= player.name %></p>
                 <p><%= player.age %></p>
                 <p><%= player.handle %></p>
-                <p><%= player.games %></p>
+                <ul>
+                    <% for(squad of player.squads) { %>
+                        <li><%= squad %></li>
+                    <% } %>
+                </ul>
                 <p><%= player.bio %></p>
+                <p><%= player.joinDate %></p>
             </div>
         </div>
 

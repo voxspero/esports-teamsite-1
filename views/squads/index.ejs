@@ -1,31 +1,21 @@
 <%- include('../partials/header.ejs') %>
+<%- include('../partials/section-head.ejs') %>
 
-<section class="container-fluid content">
-    <div class="row justify-content-center">
-        <div class="col-lg col-md d-sm-none">
-
+<% for(squad of squads) { %>
+    <div class="section__row__content__card section__row__content__card--squads">
+        <a class="section__row__content__card__image section__row__content__card__image--squad" href="/squads/<%= squad._id %>" style="background-image: url('<%= squad.thumbnail %>');"></a>
+        <h5 class="section__row__content__card__header section__row__content__card__header--squad-name"><%= squad.name %></h5>
+        <div class="section__row__content__card__body section__row__content__card__body--squad">
+            <% if(squad.description.length > 175) { %>    
+                <p class="section__row__content__card__body section__row__content__card__body--squad-text"><%= squad.description.substring(0, 175) %><span class="ellipsis">  .  .  .  </span></p>
+            <% } else { %>
+                <p class="section__row__content__card__body section__row__content__card__body--squad-text"><%= squad.description %></p>
+            <% } %>
+            <a href="/squads/<%= squad._id %>" class="section__row__content__card__button">View</a>
         </div>
-        <div class="col-lg-10 col-md col-sm">
-            <div class="d-flex row justify-content-center pt-3">
-                <% for(squad of squads) { %>
-                    <div class="card index-card my-3 mx-3">
-                        <a class="card-img-top index-img" href="/squads/<%= squad._id %>" style="background-image: url('<%= squad.thumbnail %>');"></a>
-                        <h5 class="card-header d-flex index-card-title align-items-center justify-content-between"><%= squad.name %><span class="card-text index-card-year"><%= squad.game %></span></h5>
-                        <div class="card-body">
-                            
-                            <% if(squad.description.length > 175) { %>    
-                                <p class="card-text"><%= squad.description.substring(0, 175) %><span class="ellipsis">  .  .  .  </span></p>
-                            <% } else { %>
-                                <p class="card-text"><%= squad.description %></p>
-                            <% } %>
-                            <a href="/images/<%= squad._id %>" class="btn btn-sm index-card-button mt-1">View</a>
-                        </div>
-                    </div>
-                <% }); %>
-            </div>
-        </div>
-        <div class="col-lg col-md d-sm-none"></div>
     </div>
-</section>
+<% } %>
 
+
+<%- include('../partials/section-foot.ejs') %>
 <%- include('../partials/footer.ejs') %>

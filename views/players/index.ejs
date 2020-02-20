@@ -1,31 +1,21 @@
 <%- include('../partials/header.ejs') %>
+<%- include('../partials/section-head.ejs') %>
 
-<section class="container-fluid content">
-    <div class="row justify-content-center">
-        <div class="col-lg col-md d-sm-none">
-
+<% for(player of players) { %>
+    <div class="section__row__content__card">
+        <a class="section__row__content__card__image--player" href="/players/<%= player._id %>" style="background-image: url('<%= player.thumbnail %>');"></a>
+        <h5 class="section__row__content__card__header--player-name"><%= player.name %></h5>
+        <p class="section__row__content__card__header--player-handle"><%= player.handle %></p>
+        <div class="section__row__content__card__body--player">
+            <% if(player.bio.length > 175) { %>    
+                <p class="section__row__content__card__body--player-text"><%= player.bio.substring(0, 175) %><span class="ellipsis">  .  .  .  </span></p>
+            <% } else { %>
+                <p class="section__row__content__card__body--player-text"><%= player.bio %></p>
+            <% } %>
+            <a href="/players/<%= player._id %>" class="section__row__content__card__button">View</a>
         </div>
-        <div class="col-lg-10 col-md col-sm">
-            <div class="d-flex row justify-content-center pt-3">
-                <% for(player of players) { %>
-                    <div class="card index-card my-3 mx-3">
-                        <a class="card-img-top index-img" href="/players/<%= player._id %>" style="background-image: url('<%= player.thumbnail %>');"></a>
-                        <h5 class="card-header d-flex index-card-title align-items-center justify-content-between"><%= player.name %><span class="card-text index-card-year"><%= player.squads[0] %></span></h5>
-                        <div class="card-body">
-                            
-                            <% if(player.bio.length > 175) { %>    
-                                <p class="card-text"><%= player.bio.substring(0, 175) %><span class="ellipsis">  .  .  .  </span></p>
-                            <% } else { %>
-                                <p class="card-text"><%= player.bio %></p>
-                            <% } %>
-                            <a href="/images/<%= player._id %>" class="btn btn-sm index-card-button mt-1">View</a>
-                        </div>
-                    </div>
-                <% }); %>
-            </div>
-        </div>
-        <div class="col-lg col-md d-sm-none"></div>
     </div>
-</section>
+<% } %>
 
+<%- include('../partials/section-foot.ejs') %>
 <%- include('../partials/footer.ejs') %>

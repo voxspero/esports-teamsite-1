@@ -1,0 +1,259 @@
+// colors
+$color-primary: rgb(34,34,84)
+$color-primary-light: rgb(77, 77, 197)
+$color-secondary: rgb(238,213,70)
+$color-background-footer: rgb(34,34,84)
+
+// fonts
+$font-header: 700 48px nudista-web, serif
+$font-copy: 12px nudista-web, sans-serif
+$font-navigation: 16px nudista-web, sans-serif
+
+// attribute blocks to inherit
+%no-decoration
+    text-decoration: none
+
+%flexbox-centered
+    display: flex
+    align-items: center
+    justify-content: center
+
+%row-width-100
+    width: 100%
+
+// STYLES
+body
+    font: $font-copy
+    position: relative
+    padding: 80px 0em 12em 0em
+
+// navigation
+.navigation
+    @extend %flexbox-centered
+    background-color: $color-primary
+    height: 5em
+    font: $font-navigation
+    box-shadow: 0px 0px 10px rgba(34,34,34,0.5)
+    justify-content: around
+
+    &__logospace
+        position: absolute
+        top: 0em
+        left: 0em
+        margin: 0.5em 0 0 1em
+
+    &__logotype
+        height: 6em
+        width: auto
+
+    &__link-list
+        @extend %flexbox-centered
+        margin: auto
+        padding: 0em 3em
+        list-style-type: none
+
+    &__item
+        display: inline
+
+    &__link
+        @extend %no-decoration
+        padding: 1em 3em
+        font: $font-navigation
+        color: white
+        transition: 0.3s
+        border-bottom: 0.15rem solid transparent
+        border-top: 0.15rem solid transparent
+
+        &:hover
+            @extend %no-decoration
+            background-color: $color-secondary
+            color: $color-primary
+            border-top: 0.15rem solid $color-secondary
+            border-bottom: 0.15rem solid $color-secondary
+
+        &:focus
+            border-top: 0.15rem solid $color-secondary
+            border-bottom: 0.15rem solid $color-secondary
+
+    &__link-divider
+        font: $font-navigation
+        color: $color-secondary
+
+        
+    &__link-border
+        display: inline
+        margin: 0em 3em
+        padding: 1em 0em
+        transition: 0.1s
+        border-bottom: 0.15rem solid transparent
+        border-top: 0.15rem solid transparent
+        /* text-transform: uppercase; */
+  
+        &:hover
+            /* margin: -0.7rem 0rem; */
+            border-top: 0.15rem solid $color-secondary
+            border-bottom: 0.15rem solid $color-secondary
+
+        &:focus
+            border-top: 0.15rem solid $color-secondary
+            border-bottom: 0.15rem solid $color-secondary
+
+        &--active
+            border-top: 0.15rem solid $color-secondary !important
+            border-bottom: 0.15rem solid $color-secondary !important
+
+    &__toggler
+        position: absolute
+        top: 2em
+        right: 2em
+
+    &--sticky
+        position: fixed
+        top: 0
+        right: 0
+        left: 0
+        z-index: 1030
+
+// section
+.section
+    @extend %flexbox-centered
+    width: 100%
+
+    &__row
+        @extend %row-width-100
+
+        // content
+        &__content
+            @extend %flexbox-centered
+            padding: 5em 0em
+            width: 100%
+            justify-content: center
+
+            &__card
+                width: 100%
+                border-radius: 2px
+                border: 1px solid $color-secondary
+                background-color: lightgrey
+
+                &--about
+
+                &--news
+
+                &--player
+
+                &--sponsor
+
+                &--squad
+
+                &--staffer
+
+                &__header
+                    padding: 1em 1em
+                    background-color: $color-primary-light
+                    color: $color-secondary
+
+                    &--about
+
+                    &--news
+
+                    &--player
+
+                    &--sponsor
+
+                    &--squad
+
+                    &--staffer
+
+                &__image
+
+                    &--about
+
+                    &--news
+
+                    &--player
+
+                    &--sponsor
+
+                    &--squad
+
+                    &--staffer
+
+                &__body
+                    padding: 1em 3em
+
+                    &--about-text
+
+                    &--news-text
+
+                    &--player-text
+
+                    &--sponsor-text
+
+                    &--squad-text
+
+                    &--staffer-text
+
+                &__button
+
+                    &--about
+
+                    &--news
+
+                    &--player
+
+                    &--sponsor
+
+                    &--squad
+
+                    &--staffer
+
+
+// footer
+.footer 
+    @extend %flexbox-centered
+    position: absolute
+    right: 0
+    bottom: 0
+    left: 0
+    padding: 0
+    height: 12em
+    background-color: $color-background-footer
+
+    &__row
+        @extend %row-width-100
+
+    &__left
+        @extend %flexbox-centered
+
+    &__center
+        @extend %flexbox-centered
+
+        &__link-list
+            list-style-type: none
+            margin: auto
+            padding: 1em 0
+
+        &__link
+            @extend %no-decoration
+            font: $font-navigation
+            color: $color-secondary
+            transition: 0.3s
+
+        &__link:hover
+            @extend %no-decoration
+            color: white
+
+        &__link::before
+            content: "\2022"
+            color: $color-secondary // Change the color
+            font-weight: bold
+            display: inline-block // Needed to add space between the bullet and the text
+            width: 0.75rem // Also needed for space (tweak if needed)
+            margin-left: -1em; // Also needed for space (tweak if needed)
+
+    &__right
+        @extend %flexbox-centered
+
+        &__copyright
+            color: white
+            font-weight: bold

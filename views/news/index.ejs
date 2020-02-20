@@ -1,31 +1,24 @@
 <%- include('../partials/header.ejs') %>
+<%- include('../partials/section-head.ejs') %>
 
-<section class="container-fluid content">
-    <div class="row justify-content-center">
-        <div class="col-lg col-md d-sm-none">
-
-        </div>
-        <div class="col-lg-10 col-md col-sm">
-            <div class="d-flex row justify-content-center pt-3">
-                <% for(newspost of newsposts) { %>
-                    <div class="card index-card my-3 mx-3">
-                        <a class="card-img-top index-img" href="/news/<%= newspost._id %>" style="background-image: url('<%= newspost.thumbnail %>');"></a>
-                        <h5 class="card-header d-flex index-card-title align-items-center justify-content-between"><%= newspost.title %><span class="card-text index-card-year"><%= newspost.author %></span></h5>
-                        <div class="card-body">
-                            
-                            <% if(newspost.body.length > 175) { %>    
-                                <p class="card-text"><%= newspost.body.substring(0, 175) %><span class="ellipsis">  .  .  .  </span></p>
-                            <% } else { %>
-                                <p class="card-text"><%= newspost.body %></p>
-                            <% } %>
-                            <a href="/images/<%= newspost._id %>" class="btn btn-sm index-card-button mt-1">View</a>
-                        </div>
-                    </div>
-                <% }); %>
+<div class="col-6 section__row__content section__row__content--news">
+    <% for(newspost of newsposts) { %>
+        <div class="section__row__content__card section__row__content__card--news">
+            <a class="section__row__content__card__image--news" href="/newsposts/<%= newspost._id %>" style="background-image: url('<%= newspost.thumbnail %>');"></a>
+            <h5 class="section__row__content__card__header--news"><%= newspost.name %></h5>
+            <p class="section__row__content__card__header--news-author"><%= newspost.author %></p>
+            <p class="section__row__content__card__header--news-game"><%= newspost.author %></p>
+            <div class="section__row__content__card__body--news">
+                <% if(newspost.body.length > 175) { %>    
+                    <p class="section__row__content__card__body--news-text"><%= newspost.body.substring(0, 175) %><span class="ellipsis">  .  .  .  </span></p>
+                <% } else { %>
+                    <p class="section__row__content__card__body--news-text"><%= newspost.body %></p>
+                <% } %>
+                <a href="/news/<%= newspost._id %>" class="section__row__content__card__button">View</a>
             </div>
         </div>
-        <div class="col-lg col-md d-sm-none"></div>
-    </div>
-</section>
+    <% } %>
+</div>
 
+<%- include('../partials/section-foot.ejs') %>
 <%- include('../partials/footer.ejs') %>

@@ -13,7 +13,8 @@
 
         <div class="col-lg-10 col-md-10">
             <div class="d-flex flex-column align-items-center">
-                <img src="<%= squad.game %>">
+                <h5><%= squad.name %></h5>
+                <%= squad.game %>
                 <%= squad.description %>
                 <img src="<%= squad.photograph %>">
                 <%= squad.startYear %>
@@ -23,16 +24,10 @@
                     <%= player.name %>
                     <%= player.age %>
                     <%= player.handle %>
-                    <%= player.games %>
                     <%= player.bio %>
+                    <%= player.joinDate %>
                 <% } %>
 
-                game:           String,
-                players:        [],
-                description:    String,
-                thumbnail:      String,
-                photograph:     String,
-                startYear:      String,
             </div>
         </div>
 

@@ -1,0 +1,219 @@
+.navigation__link, .navigation__link:hover, .footer__row__center__link, .footer__row__center__link:hover {
+  text-decoration: none;
+}
+
+.navigation, .navigation__link-list, .section, .section__row, .section__row__content, .footer, .footer__row__left, .footer__row__center, .footer__row__right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.section__row, .footer__row {
+  width: 100%;
+}
+
+body {
+  font: 12px nudista-web, sans-serif;
+  position: relative;
+  padding: 80px 0em 12em 0em;
+}
+
+.navigation {
+  background-color: #222254;
+  height: 5em;
+  font: 16px nudista-web, sans-serif;
+  -webkit-box-shadow: 0px 0px 10px rgba(34, 34, 34, 0.5);
+          box-shadow: 0px 0px 10px rgba(34, 34, 34, 0.5);
+  -webkit-box-pack: around;
+      -ms-flex-pack: around;
+          justify-content: around;
+}
+
+.navigation__logospace {
+  position: absolute;
+  top: 0em;
+  left: 0em;
+  margin: 0.5em 0 0 1em;
+}
+
+.navigation__logotype {
+  height: 6em;
+  width: auto;
+}
+
+.navigation__link-list {
+  margin: auto;
+  padding: 0em 3em;
+  list-style-type: none;
+}
+
+.navigation__item {
+  display: inline;
+}
+
+.navigation__link {
+  padding: 1em 3em;
+  font: 16px nudista-web, sans-serif;
+  color: white;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-bottom: 0.15rem solid transparent;
+  border-top: 0.15rem solid transparent;
+}
+
+.navigation__link:hover {
+  background-color: #eed546;
+  color: #222254;
+  border-top: 0.15rem solid #eed546;
+  border-bottom: 0.15rem solid #eed546;
+}
+
+.navigation__link:focus {
+  border-top: 0.15rem solid #eed546;
+  border-bottom: 0.15rem solid #eed546;
+}
+
+.navigation__link-divider {
+  font: 16px nudista-web, sans-serif;
+  color: #eed546;
+}
+
+.navigation__link-border {
+  display: inline;
+  margin: 0em 3em;
+  padding: 1em 0em;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  border-bottom: 0.15rem solid transparent;
+  border-top: 0.15rem solid transparent;
+  /* text-transform: uppercase; */
+}
+
+.navigation__link-border:hover {
+  /* margin: -0.7rem 0rem; */
+  border-top: 0.15rem solid #eed546;
+  border-bottom: 0.15rem solid #eed546;
+}
+
+.navigation__link-border:focus {
+  border-top: 0.15rem solid #eed546;
+  border-bottom: 0.15rem solid #eed546;
+}
+
+.navigation__link-border--active {
+  border-top: 0.15rem solid #eed546 !important;
+  border-bottom: 0.15rem solid #eed546 !important;
+}
+
+.navigation__toggler {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+}
+
+.navigation--sticky {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.section {
+  width: 100%;
+}
+
+.section__row__content {
+  padding: 5em 5em;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.section__row__content__card {
+  height: 20em;
+  width: 20em;
+  border-radius: 2px;
+  border: 1px solid #eed546;
+  background-color: lightgrey;
+  padding: 1em 1em;
+  margin: 0em 1em;
+}
+
+.section__row__content__card__header {
+  padding: 0.5em 0.5em;
+  background-color: #4d4dc5;
+  color: #eed546;
+}
+
+.section__row__content__card__body {
+  padding: 1em 0em;
+  height: 10em;
+}
+
+.section__row__content__card--news {
+  width: 80em;
+  margin: 1em 0em;
+}
+
+.section__row__content--news {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  height: 12em;
+  background-color: #222254;
+}
+
+.footer__row__center__link-list {
+  list-style-type: none;
+  margin: auto;
+  padding: 1em 0;
+}
+
+.footer__row__center__link {
+  font: 16px nudista-web, sans-serif;
+  color: #eed546;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.footer__row__center__link:hover {
+  color: white;
+}
+
+.footer__row__center__link::before {
+  content: "\2022";
+  color: #eed546;
+  font-weight: bold;
+  display: inline-block;
+  width: 0.75rem;
+  margin-left: -1em;
+}
+
+.footer__row__right__copyright {
+  color: white;
+  font-weight: bold;
+}
+/*# sourceMappingURL=styles.css.map */
