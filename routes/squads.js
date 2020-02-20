@@ -87,7 +87,48 @@ router.get('/:id', (req, res) => {
 		if (err) {
 			console.log(err);
 		} else {
-			res.render('squads/show', { squad: squad });
+			let players = [];
+			let playerPromise = new Promise((resolve, reject) => {
+				for (let i = 0; i < squad.players.length; i++) {
+					Player.findOne({ handle: squad.players[i] }, (err, player) => {
+						if (err) {
+							console.log(err);
+						} else {
+							// console.log(player.handle);
+							players.push(player);
+							// console.log(players);
+							players.sort({ joinDate: 'asc' });
+						}
+					});
+				}
+
+				setTimeout(function() {
+					resolve(players); // Yay! Everything went well!
+				}, 250);
+			});
+
+			playerPromise.then((players) => {
+				// console.log(players.length);
+				// console.log(players);
+				res.render('squads/show', { squad: squad, players: players });
+			});
+
+			// let players = [];
+			// console.log(squad.players.length);
+			// for (let i = 0; i < squad.players.length; i++) {
+			// 	Player.findOne({ handle: squad.players[i] }, (err, player) => {
+			// 		if (err) {
+			// 			console.log(err);
+			// 		} else {
+			// 			console.log(player.handle);
+			// 			players.push(player);
+			// 			console.log(players);
+			// 		}
+			// 	});
+			// }
+			// console.log(players.length);
+			// console.log(players);
+			// res.render('squads/show', { squad: squad, players: players });
 		}
 	});
 });

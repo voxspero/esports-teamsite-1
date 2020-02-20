@@ -19,7 +19,7 @@
                 <img src="<%= squad.photograph %>">
                 <%= squad.startYear %>
 
-                <% for(player of squad.players) { %>
+                <% for(player of players) { %>
                     <img src="<%= player.thumbnail %>">
                     <%= player.name %>
                     <%= player.age %>
@@ -27,7 +27,6 @@
                     <%= player.bio %>
                     <%= player.joinDate %>
                 <% } %>
-
             </div>
         </div>
 
